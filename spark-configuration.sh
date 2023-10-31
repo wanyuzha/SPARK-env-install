@@ -28,6 +28,19 @@ echo "Workers configured."
 SPARK_ENV_FILE="$SPARK_HOME/conf/spark-env.sh"
 echo "Configuring $SPARK_ENV_FILE"
 cat > "$SPARK_ENV_FILE" <<EOL
+
+# Export JAVA_HOME
+export JAVA_HOME = $JAVA_HOME
+
+# Export HADOOP CONF
+export HADOOP_CONF_DIR = $HOME/hadoop/etc/hadoop
+
+# Export YARN CONF
+export YARN_CONF_DIR = $HOME/hadoop/etc/hadoop
+
+# Spark Jars classpath
+export SPARK_DIST_CLASSPATH = $($HOME/hadoop/bin/hadoop classpath)
+
 # Spark master port
 export SPARK_MASTER_PORT=7077
 
