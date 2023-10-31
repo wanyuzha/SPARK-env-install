@@ -13,9 +13,5 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 echo "export JAVA_HOME=$JAVA_HOME" >> ~/.bashrc
 echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
 
-# Source .bashrc to update the current session
-echo "Sourcing .bashrc to update the current session..."
-source $HOME/.bashrc
-
 # Print the value of JAVA_HOME variable to confirm if it is set successfully
 echo "JAVA_HOME is set to $JAVA_HOME"

@@ -13,4 +13,8 @@ NUM_SLAVES=$1
 
 ./java-install.sh 
 
+# Source .bashrc to update the current session
+echo "Sourcing .bashrc to update the current session..."
+source $HOME/.bashrc
+
 ./hadoop-configuration.sh $NUM_SLAVES

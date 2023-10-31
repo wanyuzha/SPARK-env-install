@@ -23,8 +23,4 @@ rm hadoop-$HADOOP_VERSION.tar.gz
 echo "Adding Hadoop to PATH in .bashrc..."
 echo "export PATH=\$PATH:$INSTALL_DIR/bin:$INSTALL_DIR/sbin" >> $HOME/.bashrc
 
-# Source .bashrc to update the current session
-echo "Sourcing .bashrc to update the current session..."
-source $HOME/.bashrc
-
 echo "Hadoop $HADOOP_VERSION installation and configuration completed!"
