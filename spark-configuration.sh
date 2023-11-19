@@ -15,6 +15,14 @@ SPARK_HOME="$HOME/spark"
 # Set your Hadoop NameNode host
 HADOOP_NAMENODE_HOST="rcnfs"
 
+# copy spark start-all.sh and stop-all.sh and add it to path
+cp $SPARK_HOME/sbin/start-all.sh $SPARK_HOME/sbin/spark-start-all.sh 
+cp $SPARK_HOME/sbin/stop-all.sh $SPARK_HOME/sbin/spark-stop-all.sh 
+echo "export PATH=\$PATH:$SPARK_HOME/sbin" >> $HOME/.bashrc
+
+# copy log4j2.properties
+mv $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
+
 # Configure workers
 WORKERS_FILE="$SPARK_HOME/conf/workers"
 echo "Configuring $WORKERS_FILE"
@@ -30,16 +38,19 @@ echo "Configuring $SPARK_ENV_FILE"
 cat > "$SPARK_ENV_FILE" <<EOL
 
 # Export JAVA_HOME
-export JAVA_HOME = $JAVA_HOME
+export JAVA_HOME=$JAVA_HOME
 
 # Export HADOOP CONF
-export HADOOP_CONF_DIR = $HOME/hadoop/etc/hadoop
+export HADOOP_CONF_DIR=$HOME/hadoop/etc/hadoop
 
 # Export YARN CONF
-export YARN_CONF_DIR = $HOME/hadoop/etc/hadoop
+export YARN_CONF_DIR=$HOME/hadoop/etc/hadoop
 
 # Spark Jars classpath
-export SPARK_DIST_CLASSPATH = $($HOME/hadoop/bin/hadoop classpath)
+export SPARK_DIST_CLASSPATH=$($HOME/hadoop/bin/hadoop classpath)
+
+# Spark master host
+export SPARK_MASTER_HOST=rcnfs
 
 # Spark master port
 export SPARK_MASTER_PORT=7077

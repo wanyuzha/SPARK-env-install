@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 
 # Check if a number is provided as an argument
 if [ "$#" -ne 1 ]; then
@@ -19,6 +19,11 @@ source $HOME/.bashrc
 
 ./hadoop-configuration.sh $NUM_SLAVES
 
+# Install Spark later on
+./spark-install.sh 
+
+./spark-configuration.sh 3
+
 # Use this command only once
 hostname=$(hostname)
 
@@ -28,10 +33,8 @@ if [[ $hostname == *"rcnfs"* ]]; then
   hdfs namenode -format
 fi
 
-# Install Spark later on
-./spark-install.sh 
-
-./spark-configuration.sh 3
+# start hadoop 
+start-all.sh
 
 # Make dir for spark logs
 if [[ $hostname == *"rcnfs"* ]]; then
@@ -39,3 +42,6 @@ if [[ $hostname == *"rcnfs"* ]]; then
   hadoop fs -mkdir /sparklog
   hadoop fs -chmod 777 /sparklog
 fi
+
+# start spark
+spark-start-all.sh
