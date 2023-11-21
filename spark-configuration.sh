@@ -32,6 +32,15 @@ for i in $(seq 2 $((NUM_SLAVES))); do
 done
 echo "Workers configured."
 
+# Configure spark-defaults.conf
+DEFAULTS_FILE="$SPARK_HOME/conf/spark-defaults.conf"
+echo "Configuring $DEFAULTS_FILE"
+cat > "$DEFAULTS_FILE" <<EOL
+spark.eventLog.enabled true
+spark.eventLog.dir hdfs://rcnfs:8020/sparklog/
+spark.eventLog.compress true
+EOL
+
 # Configure spark-env.sh
 SPARK_ENV_FILE="$SPARK_HOME/conf/spark-env.sh"
 echo "Configuring $SPARK_ENV_FILE"
