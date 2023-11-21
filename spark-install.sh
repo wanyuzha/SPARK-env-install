@@ -16,6 +16,8 @@ echo "Scala has been installed successfully."
 # Step 2: Install PySpark
 sudo apt install -y python3 python3-pip
 pip3 install pyspark
+pip3 install pandas
+pip3 install pyarrow
 
 # Step 3: Download and Unzip Spark
 INSTALL_DIR="$HOME/spark"
