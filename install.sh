@@ -22,26 +22,4 @@ source $HOME/.bashrc
 # Install Spark later on
 ./spark-install.sh 
 
-./spark-configuration.sh 3
-
-# Use this command only once
-hostname=$(hostname)
-
-# if it is the master node
-if [[ $hostname == *"rcnfs"* ]]; then
-  echo "This is the master node"
-  hdfs namenode -format
-fi
-
-# start hadoop 
-start-all.sh
-
-# Make dir for spark logs
-if [[ $hostname == *"rcnfs"* ]]; then
-  echo "Make dir for spark logs"
-  hadoop fs -mkdir /sparklog
-  hadoop fs -chmod 777 /sparklog
-fi
-
-# start spark
-spark-start-all.sh
+./spark-configuration.sh $NUM_SLAVES
