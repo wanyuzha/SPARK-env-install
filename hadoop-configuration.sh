@@ -14,6 +14,8 @@ HADOOP_ETC_DIR="$HOME/hadoop/etc/hadoop"
 
 HADOOP_INSTALL_DIR="$HOME/hadoop"
 
+HDFS_DIR="/mydata/hdfs"
+
 echo "JAVA HOME is $JAVA_HOME"
 
 # Set JAVA_HOME in hadoop-env.sh
@@ -34,7 +36,7 @@ cat <<EOL > "$HADOOP_ETC_DIR/core-site.xml"
 	</property>
 	<property>
 		 <name>hadoop.tmp.dir</name>						    
-		 <value>file:$HADOOP_INSTALL_DIR/tmp</value>
+		 <value>file:$HDFS_DIR/tmp</value>
 		 <description>A base for other temporary directories.</description>
 	</property>
 </configuration>
@@ -53,11 +55,11 @@ cat <<EOL > "$HADOOP_ETC_DIR/hdfs-site.xml"
   </property>
   <property>
     <name>dfs.namenode.name.dir</name>
-    <value>file:$HADOOP_INSTALL_DIR/tmp/dfs/name</value>
+    <value>file:$HDFS_DIR/tmp/dfs/name</value>
   </property>
   <property>
     <name>dfs.datanode.data.dir</name>
-    <value>file:$HADOOP_INSTALL_DIR/tmp/dfs/data</value>
+    <value>file:$HDFS_DIR/tmp/dfs/data</value>
   </property>
 </configuration>
 EOL
