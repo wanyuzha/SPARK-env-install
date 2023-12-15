@@ -68,10 +68,7 @@ export SPARK_MASTER_PORT=7077
 export SPARK_MASTER_WEBUI_PORT=8080
 
 # Worker CPU cores
-export SPARK_WORKER_CORES=1
-
-# Worker memory
-export SPARK_WORKER_MEMORY=4g
+export SPARK_WORKER_CORES=4
 
 # Worker port
 export SPARK_WORKER_PORT=7078
