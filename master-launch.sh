@@ -25,3 +25,8 @@ fi
 
 # start spark
 spark-start-all.sh
+
+# start history server
+SPARK_HOME="$HOME/spark"
+
+$SPARK_HOME/sbin/start-history-server.sh

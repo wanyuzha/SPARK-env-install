@@ -17,6 +17,7 @@ fi
 
 # Define the user's home directory
 USER_HOME_DIR="/users/Wanyu"
+USER_NAME="Wanyu"
 
 
 # we use relative path here, point at /users/XXX/.ssh/id_rsa.pub
@@ -31,9 +32,8 @@ fi
 # Number of slave nodes
 NUM_SLAVES=$1
 
-
+chown $USER_NAME /mydata
 cat $USER_HOME_DIR/.ssh/id_rsa.pub >> $USER_HOME_DIR/.ssh/authorized_keys
-
 
 for i in $(seq 2 $NUM_SLAVES); do
  node=$(printf "rc%02d" $((i - 1)))
@@ -41,5 +41,5 @@ for i in $(seq 2 $NUM_SLAVES); do
  ssh-keyscan -H $node >> ~/.ssh/known_hosts
  scp $USER_HOME_DIR/.ssh/id_rsa.pub $node:$USER_HOME_DIR/.ssh/id_rsa.pub
  echo "Logging into $node"
- ssh $node "cat $USER_HOME_DIR/.ssh/id_rsa.pub >> $USER_HOME_DIR/.ssh/authorized_keys && rm $USER_HOME_DIR/.ssh/id_rsa.pub"
+ ssh $node "cat $USER_HOME_DIR/.ssh/id_rsa.pub >> $USER_HOME_DIR/.ssh/authorized_keys && rm $USER_HOME_DIR/.ssh/id_rsa.pub && chown $USER_NAME /mydata"
 done
