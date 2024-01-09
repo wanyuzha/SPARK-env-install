@@ -105,6 +105,14 @@ cat <<EOL > "$HADOOP_ETC_DIR/yarn-site.xml"
     <name>yarn.nodemanager.aux-services</name>
     <value>mapreduce_shuffle</value>
   </property>
+  <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.log.server.url</name>
+    <value>http://rcnfs:19888/jobhistory/logs/</value>
+  </property>
 </configuration>
 EOL
 

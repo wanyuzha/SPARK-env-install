@@ -23,5 +23,3 @@ source $HOME/.bashrc
 ./spark-install.sh 
 
 ./spark-configuration.sh $NUM_SLAVES
-
-./parallel-install $NUM_SLAVES
