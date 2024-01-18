@@ -3,8 +3,8 @@
 # Update the package list of the system
 sudo apt-get update
 
-# Install OpenJDK 11
-sudo apt-get install -y openjdk-11-jdk
+# Install OpenJDK 8
+sudo apt-get install -y openjdk-8-jdk
 
 # Set the JAVA_HOME environment variable
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")

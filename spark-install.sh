@@ -22,11 +22,11 @@ pip3 install pyarrow
 # Step 3: Download and Unzip Spark
 INSTALL_DIR="$HOME/spark"
 echo "Downloading Spark..."
-wget https://dlcdn.apache.org/spark/spark-3.5.0/spark-3.5.0-bin-without-hadoop.tgz
+wget https://dlcdn.apache.org/spark/spark-3.4.2/spark-3.4.2-bin-hadoop3.tgz
 
 echo "Unzipping Spark..."
-tar -xzf spark-3.5.0-bin-without-hadoop.tgz
-rm spark-3.5.0-bin-without-hadoop.tgz
-mv spark-3.5.0-bin-without-hadoop $INSTALL_DIR
+tar -xzf spark-3.4.2-bin-without-hadoop.tgz
+rm spark-3.4.2-bin-without-hadoop.tgz
+mv spark-3.4.2-bin-without-hadoop $INSTALL_DIR
 
 echo "Spark has been downloaded and unzipped."
