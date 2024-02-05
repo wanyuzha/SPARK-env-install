@@ -13,5 +13,5 @@ for i in $(seq 2 $NUM_SLAVES); do
  node=$(printf "rc%02d" $((i - 1)))
  # avoid the input of yes/no
  ssh-keyscan -H $node >> ~/.ssh/known_hosts
- ssh $node "cd ~ && git clone https://github.com/wanyuzha/spark-env-install.git && cd spark-env-install && ./install.sh $NUM_SLAVES" &
+ ssh $node "cd ~ && git clone -b spark-3.5 https://github.com/wanyuzha/spark-env-install.git && cd spark-env-install && ./install.sh $NUM_SLAVES" &
 done
