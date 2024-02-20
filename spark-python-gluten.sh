@@ -1,6 +1,6 @@
 # Set your Spark installation path
 SPARK_HOME="$HOME/spark"
-GLUTEN_JAR="/users/Wanyu/gluten/package/target/gluten-velox-bundle-spark3.4_2.12-ubuntu_22.04-1.2.0-SNAPSHOT.jar"
+GLUTEN_JAR="/users/Wanyu/gluten/package/target/gluten-velox-bundle-spark3.4_2.12-ubuntu_22.04_x86_64-1.2.0-SNAPSHOT.jar"
 
 $SPARK_HOME/bin/spark-submit \
   --master spark://rcnfs:7077   \
