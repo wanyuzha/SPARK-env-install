@@ -113,6 +113,10 @@ cat <<EOL > "$HADOOP_ETC_DIR/yarn-site.xml"
     <name>yarn.log.server.url</name>
     <value>http://rcnfs:19888/jobhistory/logs/</value>
   </property>
+  <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>0.0.0.0:8088</value>
+  </property>
 </configuration>
 EOL
 
