@@ -1,25 +1,21 @@
-#!/bin/bash -i
+#!/bin/bash
+set -e
 
 # Check if a number is provided as an argument
 if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 <number-of-slave-nodes>"
-  exit 1
+ echo "Usage: $0 <number-of-slave-nodes>"
+ exit 1
 fi
 
 # Number of slave nodes
 NUM_SLAVES=$1
 
-./hadoop-install.sh 
+sudo ./ssh-distribute.sh $NUM_SLAVES
 
-./java-install.sh 
+./install-local.sh $NUM_SLAVES
 
-# Source .bashrc to update the current session
-echo "Sourcing .bashrc to update the current session..."
-source $HOME/.bashrc
+./parallel-install.sh $NUM_SLAVES
 
-./hadoop-configuration.sh $NUM_SLAVES
+cd ~
 
-# Install Spark later on
-./spark-install.sh 
-
-./spark-configuration.sh $NUM_SLAVES
+git clone https://github.com/wanyuzha/tpch.git

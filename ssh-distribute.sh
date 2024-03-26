@@ -41,5 +41,9 @@ for i in $(seq 2 $NUM_SLAVES); do
  ssh-keyscan -H $node >> ~/.ssh/known_hosts
  scp $USER_HOME_DIR/.ssh/id_rsa.pub $node:$USER_HOME_DIR/.ssh/id_rsa.pub
  echo "Logging into $node"
- ssh $node "cat $USER_HOME_DIR/.ssh/id_rsa.pub >> $USER_HOME_DIR/.ssh/authorized_keys && rm $USER_HOME_DIR/.ssh/id_rsa.pub && chown $USER_NAME /mydata"
+ ssh -o StrictHostKeyChecking=no $node "cat $USER_HOME_DIR/.ssh/id_rsa.pub >> $USER_HOME_DIR/.ssh/authorized_keys && rm $USER_HOME_DIR/.ssh/id_rsa.pub && chown $USER_NAME /mydata"
+ if [ $? -ne 0 ]; then
+    echo "Error: Command failed."
+    exit 1  
+ fi
 done
