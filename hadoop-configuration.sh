@@ -99,7 +99,7 @@ cat <<EOL > "$HADOOP_ETC_DIR/yarn-site.xml"
 <configuration>
   <property>
     <name>yarn.resourcemanager.hostname</name>
-    <value>rcnfs</value>
+    <value>127.0.0.1</value>
   </property>
   <property>
     <name>yarn.nodemanager.aux-services</name>

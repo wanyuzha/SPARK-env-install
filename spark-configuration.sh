@@ -39,6 +39,7 @@ cat > "$DEFAULTS_FILE" <<EOL
 spark.eventLog.enabled true
 spark.eventLog.dir hdfs://rcnfs:8020/sparklog/
 spark.eventLog.compress true
+spark.yarn.historyServer.address 127.0.0.1:18080
 EOL
 
 # Configure spark-env.sh
@@ -59,13 +60,16 @@ export YARN_CONF_DIR=$HOME/hadoop/etc/hadoop
 export SPARK_DIST_CLASSPATH=$($HOME/hadoop/bin/hadoop classpath)
 
 # Spark master host
-export SPARK_MASTER_HOST=rcnfs
+export SPARK_MASTER_HOST=127.0.0.1
 
 # Spark master port
 export SPARK_MASTER_PORT=7077
 
+# Spark local IP for history server
+export SPARK_LOCAL_IP=127.0.0.1
+
 # WebUI port
-export SPARK_MASTER_WEBUI_PORT=8080
+export SPARK_MASTER_WEBUI_PORT=8081
 
 # Worker CPU cores
 export SPARK_WORKER_CORES=4
@@ -74,7 +78,7 @@ export SPARK_WORKER_CORES=4
 export SPARK_WORKER_PORT=7078
 
 # Worker WebUI port
-export SPARK_WORKER_WEBUI_PORT=8081
+export SPARK_WORKER_WEBUI_PORT=8082
 
 # Set history directory
 export SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory=hdfs://$HADOOP_NAMENODE_HOST:8020/sparklog/ -Dspark.history.fs.cleaner.enabled=true"
