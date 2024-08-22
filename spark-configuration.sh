@@ -60,7 +60,7 @@ export YARN_CONF_DIR=$HOME/hadoop/etc/hadoop
 export SPARK_DIST_CLASSPATH=$($HOME/hadoop/bin/hadoop classpath)
 
 # Spark master host
-export SPARK_MASTER_HOST=127.0.0.1
+export SPARK_MASTER_HOST=rcnfs
 
 # Spark master port
 export SPARK_MASTER_PORT=7077

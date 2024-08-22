@@ -3,7 +3,7 @@ SPARK_HOME="$HOME/spark"
 
 $SPARK_HOME/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi   \
---master spark://127.0.0.1:7077   \
+--master spark://rcnfs:7077   \
 --driver-memory 512M \
 --executor-memory 512M \
 --total-executor-cores 1 \
