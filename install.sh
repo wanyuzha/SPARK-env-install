@@ -16,6 +16,8 @@ sudo ./ssh-distribute.sh $NUM_SLAVES
 
 ./parallel-install.sh $NUM_SLAVES
 
+./spark-add-local.sh $NUM_SLAVES
+
 cd ~
 
 git clone https://github.com/wanyuzha/tpch.git
