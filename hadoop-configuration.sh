@@ -47,7 +47,7 @@ cat <<EOL > "$HADOOP_ETC_DIR/hdfs-site.xml"
 <configuration>
   <property>
     <name>dfs.namenode.secondary.http-address</name>
-    <value>127.0.0.1:50090</value>
+    <value>rcnfs:50090</value>
   </property>
   <property>
     <name>dfs.replication</name>
@@ -73,11 +73,11 @@ cat <<EOL > "$HADOOP_ETC_DIR/mapred-site.xml"
   </property>
   <property>
     <name>mapreduce.jobhistory.address</name>
-    <value>127.0.0.1:10020</value>
+    <value>rcnfs:10020</value>
   </property>
   <property>
     <name>mapreduce.jobhistory.webapp.address</name>
-    <value>127.0.0.1:19888</value>
+    <value>rcnfs:19888</value>
   </property>
   <property>
     <name>yarn.app.mapreduce.am.env</name>
@@ -99,7 +99,7 @@ cat <<EOL > "$HADOOP_ETC_DIR/yarn-site.xml"
 <configuration>
   <property>
     <name>yarn.resourcemanager.hostname</name>
-    <value>127.0.0.1</value>
+    <value>rcnfs</value>
   </property>
   <property>
     <name>yarn.nodemanager.aux-services</name>
@@ -111,7 +111,7 @@ cat <<EOL > "$HADOOP_ETC_DIR/yarn-site.xml"
   </property>
   <property>
     <name>yarn.log.server.url</name>
-    <value>http://127.0.0.1:19888/jobhistory/logs/</value>
+    <value>http://rcnfs:19888/jobhistory/logs/</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address</name>
