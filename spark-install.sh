@@ -24,7 +24,6 @@ INSTALL_DIR="$HOME/spark"
 
 echo "Unzipping Spark..."
 tar -xzf ~/spark-3.4.4-SNAPSHOT-bin-custom-spark.tgz
-rm ~/spark-3.4.4-SNAPSHOT-bin-custom-spark.tgz
-mv ~/spark-3.4.4-SNAPSHOT-bin-custom-spark $INSTALL_DIR
+mv spark-3.4.4-SNAPSHOT-bin-custom-spark $INSTALL_DIR
 
 echo "Spark has been downloaded and unzipped."
