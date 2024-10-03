@@ -3,7 +3,7 @@ SPARK_HOME="$HOME/spark"
 
 $SPARK_HOME/bin/spark-submit \
 --master yarn \
---num-executors 25 \
+--num-executors 3 \
 --executor-cores 4 \
 --executor-memory 4g \
 wiki_Q1.py

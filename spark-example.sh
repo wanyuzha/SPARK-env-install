@@ -7,5 +7,5 @@ $SPARK_HOME/bin/spark-submit \
 --driver-memory 512M \
 --executor-memory 512M \
 --total-executor-cores 1 \
-$SPARK_HOME/examples/jars/spark-examples_2.12-3.4.3.jar \
+$SPARK_HOME/examples/jars/spark-examples_2.12-3.4.4-SNAPSHOT.jar \
 10	
