@@ -21,6 +21,7 @@ pip3 install pyarrow
 
 # Step 3: Download and Unzip Spark
 INSTALL_DIR="$HOME/spark"
+rm -rf $INSTALL_DIR
 
 echo "Unzipping Spark..."
 tar -xzf ~/spark-3.4.4-SNAPSHOT-bin-custom-spark.tgz

@@ -22,6 +22,18 @@ echo "export PATH=\$PATH:$SPARK_HOME/sbin" >> $HOME/.bashrc
 
 # copy log4j2.properties
 mv $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
+PROPERTY_FILE="$SPARK_HOME/conf/log4j2.properties"
+cat >> "$PROPERTY_FILE" <<EOL
+appenders = console, FA
+appender.FA.type = File
+appender.FA.name = FILE
+appender.FA.append = false
+appender.FA.fileName = /users/Wanyu/logs/spark-custom-log-\${date:yyyyMMdd_HHmmss}.out
+appender.FA.layout.type = PatternLayout
+appender.FA.layout.pattern = %d{yyyy-MM-dd HH:mm:ss.SSS} %level [%t] %c{1}- %msg%n
+
+rootLogger.appenderRef.FA.ref = FILE
+EOL
 
 # Configure workers
 WORKERS_FILE="$SPARK_HOME/conf/workers"

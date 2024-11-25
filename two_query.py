@@ -31,28 +31,59 @@ import pyspark.sql.functions as F
 #Building a Spark session to be able to perform read/write operations to and from BigQuery
 spark = SparkSession.builder.appName("Wiki1B").config("spark.serializer", "org.apache.spark.serializer.KryoSerializer").getOrCreate()
 
-for i in range(1,2):
+df = spark.read.parquet("hdfs://rcnfs:8020/tpch/sf1/lineitem.parquet")
 
-     df = spark.read.parquet("hdfs://rcnfs:8020/wiki/1B/")
+#df.printSchema()
 
-     #df.printSchema()
+#df.show()
 
-     #df.show()
+df.createOrReplaceTempView("lineitem")
 
-     #print("Number of partitions before:", df.rdd.getNumPartitions())
+result = spark.sql("""select
+l_returnflag,
+l_linestatus,
+sum(l_quantity) as sum_qty,
+sum(l_extendedprice) as sum_base_price,
+sum(l_extendedprice*(1-l_discount)) as sum_disc_price,
+sum(l_extendedprice*(1-l_discount)*(1+l_tax)) as sum_charge,
+avg(l_quantity) as avg_qty,
+avg(l_extendedprice) as avg_price,
+avg(l_discount) as avg_disc,
+count(*) as count_order
+from
+lineitem
+where
+l_shipdate <= '1998-11-28'
+group by
+l_returnflag,
+l_linestatus
+order by
+l_returnflag,
+l_linestatus;""")
 
-     #df = df.repartition(1200)
+result.show()
 
-     #print("Number of partitions after:", df.rdd.getNumPartitions())
 
-     #df.show(5)
-     #df.printSchema()
-     df.createOrReplaceTempView("Wiki1B")
+df = spark.read.parquet("hdfs://rcnfs:8020/wiki/1B/")
 
-     result = spark.sql("""SELECT language, SUM(views)
-     FROM Wiki1B
-     GROUP BY language""")
+#df.printSchema()
 
-     result.show()
+#df.show()
 
-     print('Job Completed Successfully!')
+#print("Number of partitions before:", df.rdd.getNumPartitions())
+
+#df = df.repartition(1200)
+
+#print("Number of partitions after:", df.rdd.getNumPartitions())
+
+#df.show(5)
+#df.printSchema()
+df.createOrReplaceTempView("Wiki1B")
+
+result = spark.sql("""SELECT language, SUM(views)
+FROM Wiki1B
+GROUP BY language""")
+
+result.show()
+
+print('Job Completed Successfully!')
